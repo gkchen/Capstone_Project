@@ -121,3 +121,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+*.zip
+jobs_listings_1.csv
+jobs_listings_2.csv
+.DS_Store
+*.feather
