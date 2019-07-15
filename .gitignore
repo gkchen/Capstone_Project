@@ -127,3 +127,6 @@ jobs_listings_2.csv
 .DS_Store
 *.feather
 *.pkd
+*.geojson
+other_data/BLS_field_descriptions.csv
+other_data/BLS_job_descriptions.csv
