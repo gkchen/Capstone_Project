@@ -32,7 +32,7 @@
         <li><a href="#data">Data</a></li>
         <li><a href="#exploration">Exploration</a></li>
         <li><a href="#machine-learning">Machine Learning</a></li>
-        <li><a href="#future work">Model</a></li>
+        <li><a href="#future-work">Future Work</a></li>
       </ul>
     </div>
     <!-- /dl-menuwrapper -->
@@ -213,6 +213,7 @@
             <p>Natural language processing | Feature reduction</p>
             <p>Using an online singular value decomposition algorithm, 5419 keyword features are reduced to 50 principle components.</p>
             <!-- Principle axes -->
+            <!--
             <div>
 
 
@@ -233,6 +234,82 @@
 
             </script>
             </div>
+            -->
+            <!-- Principle axes slide show -->
+            <img class="mySlides" src="../plots/word_clouds/pc_0.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_1.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_2.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_3.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_4.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_5.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_6.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_7.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_8.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_9.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_10.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_11.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_12.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_13.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_14.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_15.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_16.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_17.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_18.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_19.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_20.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_21.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_22.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_23.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_24.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_25.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_26.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_27.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_28.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_29.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_30.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_31.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_32.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_33.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_34.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_35.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_36.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_37.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_38.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_39.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_40.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_41.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_42.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_43.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_44.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_45.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_46.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_47.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_48.png">
+            <img class="mySlides" src="../plots/word_clouds/pc_49.png">
+            <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+            <script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+              showDivs(slideIndex += n);
+            }
+
+            function showDivs(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              if (n > x.length) {slideIndex = 1}
+              if (n < 1) {slideIndex = x.length} ;
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+              }
+              x[slideIndex-1].style.display = "block";
+            }
+
+            </script>
+
+
           </div>
         </div>
       </div>
@@ -240,7 +317,7 @@
   </section>
 
   <!-- Future Work -->
-  <section id="future work" class="home-section bg-white">
+  <section id="future-work" class="home-section bg-white">
     <div class="container">
       <div class="row">
         <div class="col-md-offset-2 col-md-8">
