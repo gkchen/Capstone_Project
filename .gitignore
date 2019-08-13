@@ -133,3 +133,4 @@ other_data/BLS_job_descriptions.csv
 transforms/lsamodel.pkd
 transforms/sparse_doc_term_matrix.pkd
 sparse_doc_term_matrix_copy.pkd
+*.pkd
