@@ -10,3 +10,7 @@ The data is provided by The Data Incubator and Thinknum consisting of 175 GB of 
 ## Machine Learning
 
 Job post titles were processed using gensim and scikit-learn natural language processing packages and TF-IDF vectorizer. The cleaned and vectorized job post data is used to iteratively train multinominal naive-bayes models with and without state population weights. To yield insights into the overall job market, an online SVD algorithm was used to decompose the job keywords into 50 sectors of industry.
+
+## Link
+
+[nbviewer](https://nbviewer.jupyter.org/github/gkchen/Capstone_Project/blob/master/explore_jobs.ipynb)
