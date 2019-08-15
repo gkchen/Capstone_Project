@@ -1,13 +1,8 @@
 import pandas as pd
-import numpy as np
 import dill
-import os
 import re
-import random
 
 from sklearn import base
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB, ComplementNB
 from sklearn.pipeline import Pipeline
 # from sklearn.model_selection import train_test_split, GridSearchCV
 
@@ -22,6 +17,7 @@ from IPython.display import IFrame
 
 py.init_notebook_mode(connected=True)
 
+
 class TextPreProcess(base.BaseEstimator, base.TransformerMixin):
     """
     Input  : document list
@@ -30,7 +26,7 @@ class TextPreProcess(base.BaseEstimator, base.TransformerMixin):
     """
 
     def __init__(self, ignore):
-        self.en_stop = set(stopwords.words('english')) # English stop words list
+        self.en_stop = set(stopwords.words('english'))  # English stop words list
         self.tokenizer = RegexpTokenizer(r'[a-z]+&?[a-z]+')
         self.lemmatizer = WordNetLemmatizer()
         self.replace = ignore
@@ -40,7 +36,7 @@ class TextPreProcess(base.BaseEstimator, base.TransformerMixin):
         for key, val in self.replace.items():
             raw = re.sub(key, val, raw)
         tokens = self.tokenizer.tokenize(raw)
-        stopped_tokens = [i for i in tokens if not i in self.en_stop]
+        stopped_tokens = [i for i in tokens if i not in self.en_stop]
         lemma_tokens = [self.lemmatizer.lemmatize(i) for i in stopped_tokens]
         output = ' '.join(lemma_tokens)
         return output
@@ -52,12 +48,14 @@ class TextPreProcess(base.BaseEstimator, base.TransformerMixin):
         output = [self._process(text) for text in X]
         return output
 
+
 def get_keywords(pipe, text):
     cleaned = pipe.named_steps['clean'].transform(text)
     sparse = pipe.named_steps['tfidf'].transform(cleaned)
     keywords = pipe.named_steps['tfidf'].inverse_transform(sparse)
 
     return keywords
+
 
 def plot_single_map(pipe, text, color, title_prefix=''):
     fig = go.Figure()
@@ -72,14 +70,15 @@ def plot_single_map(pipe, text, color, title_prefix=''):
                          colorscale=color,
                          colorbar=dict(title='Porportion',
                                        titleside='top'
-                                      )
-                        )
+                                       )
+                         )
     layout = go.Layout(geo_scope='usa', title=title_prefix + ', '.join(keywords[0]),
                        paper_bgcolor='rgba(0,0,0,0)',
                        plot_bgcolor='rgba(0,0,0,0)')
 
     fig = go.Figure(data=[data], layout=layout)
     return fig
+
 
 def plot_multi_map(pipes, text, color, title_prefix=''):
     # Create figure
@@ -103,12 +102,12 @@ def plot_multi_map(pipes, text, color, title_prefix=''):
                              name=label,
                              colorbar=dict(title='Proportion',
                                            titleside='top'
-                                          )
-                            )
+                                           )
+                             )
         step = dict(method="restyle",
                     args=["visible", [False] * len(pipes)],
                     label=label
-                   )
+                    )
         step["args"][1][i] = True  # Toggle i'th trace to "visible"
         data.append(plot)
         steps.append(step)
@@ -117,8 +116,8 @@ def plot_multi_map(pipes, text, color, title_prefix=''):
     sliders = [dict(active=10,
                     currentvalue={"prefix": "Week of: "},
                     steps=steps
-                   )
-              ]
+                    )
+               ]
     layout = go.Layout(geo_scope='usa', title=title_prefix+', '.join(keywords[0]), sliders=sliders,
                        paper_bgcolor='rgba(0,0,0,0)',
                        plot_bgcolor='rgba(0,0,0,0)')
@@ -130,6 +129,7 @@ def plot_multi_map(pipes, text, color, title_prefix=''):
     # py.plot(fig, filename='plots/usa_total_posts.html', auto_open=False)
     # s = py.plot(fig, include_plotlyjs=False, output_type='div')
     return fig
+
 
 ignore = pd.read_feather('other_data/ignore.feather')
 ignore_dict = ignore.set_index('regex').to_dict()['sub']
@@ -158,6 +158,7 @@ with open('models/mnb_unweighted/top_vocabulary/weekly_estimators.pkd', 'rb') as
 
 weekly_unweighted_pipes = {key: Pipeline([('clean', tpp), ('tfidf', tfv), ('nb', val)]) for key, val in weekly_unweighted_estimators.items()}
 
+
 def make_prediction(text):
     fig = plot_single_map(total_unweighted_pipe, text, 'Reds', 'Unweighted Predictions for: ')
     py.iplot(fig)
@@ -165,6 +166,7 @@ def make_prediction(text):
     py.iplot(fig)
 
     return None
+
 
 def make_weekly_prediction(text):
     fig = plot_multi_map(weekly_unweighted_pipes, text, 'Reds', 'Weekly Unweighted Predictions for: ')
