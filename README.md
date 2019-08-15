@@ -13,4 +13,4 @@ Job post titles were processed using gensim and scikit-learn natural language pr
 
 ## Link
 
-[nbviewer](https://nbviewer.jupyter.org/github/gkchen/Capstone_Project/blob/master/explore_jobs.ipynb)
+[nbviewer](https://nbviewer.jupyter.org/github/gkchen/Capstone_Project/blob/master/job_search.ipynb)
